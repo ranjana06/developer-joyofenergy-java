@@ -31,7 +31,8 @@ public class PricePlanComparatorController {
     }
 
     @GetMapping("/compare-all/{smartMeterId}")
-    public ResponseEntity<Map<String, Object>> calculatedCostForEachPricePlan(@PathVariable String smartMeterId) {
+    public ResponseEntity<Map<String, Object>> calculatedCostForEachPricePlan(
+            @PathVariable("smartMeterId") String smartMeterId) {
         String pricePlanId = accountService.getPricePlanIdForSmartMeterId(smartMeterId);
         Optional<Map<String, BigDecimal>> consumptionsForPricePlans =
                 pricePlanService.getConsumptionCostOfElectricityReadingsForEachPricePlan(smartMeterId);
